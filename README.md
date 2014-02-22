@@ -34,7 +34,19 @@ TODO: David.
 
 ### Windows
 
-TODO: Shibo.
+TODO: 
+
+[Install Node](http://nodejs.org/)
+
+Grunt `npm install -g grunt-cli`
+
+[Install Git](http://msysgit.github.io/)
+
+[Install Ruby](http://rubyinstaller.org/downloads/)
+
+Sass `gem install sass`
+
+[Sublime](http://www.sublimetext.com/)
 
 ## License
 
