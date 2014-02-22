@@ -1,4 +1,5 @@
-var Email = mongoose.model('Email');
+var mongoose = require('mongoose'),
+  Email = mongoose.model('Email');
 
 //
 // Lists all emails currently in the database.
