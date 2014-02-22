@@ -30,7 +30,23 @@ or from <http://nodejs.org>.
 
 ### Linux (Debian)
 
-TODO: David.
+
+#### Node
+With [Node.js](http://nodejs.org)
+	Click install
+	Downlaod the .gz file
+	unpack the .gz file to a folder
+	make test && sudo make install inside folder
+
+#### Grunt
+	sudo npm install -g grunt-cli
+
+#### Ruby
+	sudo apt-get install ruby
+
+#### Sass
+	gem install sass
+
 
 ### Windows
 
