@@ -1,0 +1,51 @@
+{
+  "name": "gogomail",
+  "version": "0.0.0",
+  "description": "Check mail when it matters in the clouds.",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leoj3n/gogomail.git"
+  },
+  "keywords": [
+    "mail",
+    "gogo"
+  ],
+  "author": "Joel Kuzmarski, David Brotz, Shibo Liang",
+  "license": "BSD-2",
+  "bugs": {
+    "url": "https://github.com/leoj3n/gogomail/issues"
+  },
+  "engines": {
+    "node": ">= 0.6.0",
+    "npm": ">= 1.0.0"
+  },
+  "dependencies": {
+    "jade": "~0.34.0",
+    "express": "~3.3.4",
+    "mongoose": "~3.6.14"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "request": "~2.27.0",
+    "grunt-env": "~0.4.1",
+    "time-grunt": "~0.1.1",
+    "grunt-develop": "~0.2.2",
+    "load-grunt-tasks": "~0.2.0",
+    "grunt-jade-usemin": "~0.2.11",
+    "grunt-contrib-sass": "~0.7.2",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-contrib-imagemin": "~0.5.0"
+  }
+}

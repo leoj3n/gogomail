@@ -1,0 +1,12 @@
+{
+  "name": "gogomail",
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "underscore": "~1.6.0",
+    "fastclick": "~0.6.11",
+    "visibilityjs": "~1.1.0",
+    "jquery-hammerjs": "~1.0.1",
+    "Verimail.js": "git@github.com:amail/Verimail.js.git"
+  }
+}
+

@@ -1,0 +1,22 @@
+doctype 5
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='author', content='Joel Kuzmarski, David Brotz, Shibo Liang')
+    meta(name='description', content='Check mail when it matters in the clouds.')
+    meta(name='keywords', content='mail,gogo')
+    title!= title
+    block css
+      if env === 'development'
+        //-<!-- build:css dist/css/app.css -->
+        link(rel='stylesheet', href='/css/app.css')
+        //-<!-- endbuild -->
+      else
+        link(rel='stylesheet', href='/css/app.css')
+    block js
+      if env === 'development'
+        script(src='http://localhost:35729/livereload.js')
+  body
+    block content

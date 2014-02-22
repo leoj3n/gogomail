@@ -1,0 +1,47 @@
+//============================================================
+//
+// Mouse
+//
+//============================================================
+
+html.mouse
+
+  a:hover,button:hover
+    +transition("color #{$BUTTON_HOVER}, background-color #{$BUTTON_HOVER}, opacity #{$BUTTON_HOVER}")
+
+  a:hover
+    color: lighten($EMBER,25%)
+
+  button:hover
+    background-color: $EMBER
+    color: $WHITE
+
+  .links a:hover
+    background-color: $EMBER
+    color: $WHITE
+
+
+
+//============================================================
+//
+// Touch
+//
+//============================================================
+
+html.touch
+
+  a.tap,button.tap
+    +transition("color #{$BUTTON_TAP}, background-color #{$BUTTON_TAP}, opacity #{$BUTTON_TAP}")
+
+  a.tap
+    color: lighten($EMBER,25%)
+
+  button.tap
+    background-color: $EMBER
+    color: $WHITE
+
+  .links a.tap
+    background-color: $EMBER
+    color: $WHITE
+
+

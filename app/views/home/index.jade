@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  form#mail
+    ul.inputs
+      li
+        input.email-input(type='email'
+                          tabindex='1'
+                          placeholder='your@email.com')
+      li
+        input.submit-input(tabindex='2'
+                           type='submit'
+                           value='Submit!')
+
+  if env === 'development'
+    //-<!-- build:js dist/js/index.js -->
+    script(src='/js/index.js')
+    script(src='/components/jquery/dist/jquery.js')
+    script(src='/components/underscore/underscore.js')
+    script(src='/js/underscore.tap.js')
+    script(src='/components/fastclick/lib/fastclick.js')
+    script(src='/components/Verimail.js/src/verimail.jquery.js')
+    script(src='/components/visibilityjs/lib/visibility.core.js')
+    script(src='/components/visibilityjs/lib/visibility.fallback.js')
+    //-<!-- endbuild -->
+  else
+    script(src='/js/index.js')
+
+  script.
+    $(function() {
+      app();
+    });
