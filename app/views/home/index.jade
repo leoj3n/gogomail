@@ -1,15 +1,17 @@
 extends ../layout
 
 block content
-  form#mail
+  form#mail(action='mail', method='get')
     ul.inputs
       li
         input.email-input(type='email'
-                          tabindex='1'
+                          name='email'
                           placeholder='your@email.com')
       li
-        input.submit-input(tabindex='2'
-                           type='submit'
+        input.password-input(type='password'
+                          name='password')
+      li
+        input.submit-input(type='submit'
                            value='Submit!')
 
   if env === 'development'

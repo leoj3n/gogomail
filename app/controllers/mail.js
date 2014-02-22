@@ -2,26 +2,39 @@ var mongoose = require('mongoose'),
   Email = mongoose.model('Email');
 
 exports.register = function( req, res ) {
-  var email = new Email( { email: req.params.newEmail } );
+  var newEmail = req.body.email,
+    newPass = req.body.email,
+    email = new Email( { email: newEmail } ),
+    subjects;
 
-  email.save(function( err ) {
+  //
+  // Save the email to MongoDB
+  //
 
-    //
-    // Abort if there was an error saving the email
-    //
+  // email.save(function( err ) {
 
-    if ( err ) {
-      console.log(err);
-      res.send(err);
-      return;
-    }
+  //   //
+  //   // Abort if there was an error saving the email
+  //   //
 
-  });
+  //   if ( err ) {
+  //     console.log(err);
+  //     res.send(err);
+  //     return;
+  //   }
+
+  // });
+
+  //
+  // TODO: SMTP request code
+  //
 
   //
   // Send success message
   //
 
-  // TODO: Render a view
-  res.send('REGISTERED!');
+  res.render( 'mail/index', {
+     title: 'Your Email Subjects &bull; GoGo Mail',
+     subject: subjects
+   });
 };

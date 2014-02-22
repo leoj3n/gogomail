@@ -31,15 +31,16 @@ module.exports = function( app, config ) {
     app.set( 'port', config.port );
     app.set( 'views', config.root + '/app/views' );
     app.set( 'view engine', 'jade' );
-    app.use(express.favicon( config.root + '/public/img/favicon.ico' ));
-    app.use(express.bodyParser());
+    // app.use(express.favicon( config.root + '/public/img/favicon.ico' ));
+    app.use(express.json());
+    app.use(express.urlencoded());
     app.use(express.methodOverride());
     app.use(app.router);
     app.use(function( req, res ) {
       res.status(404);
-      res.redirect('/');
+      // res.redirect('/');
 
-      //res.render( '404', { title: '404' } );
+      res.render( '404', { title: '404' } );
     });
   });
 };

@@ -7,7 +7,7 @@ module.exports = function( app ) {
   // mail route
   // TODO: use POST data...
   var mail = require('../app/controllers/mail');
-  app.get( '/mail/:newEmail', mail.register );
+  app.post( '/mail', mail.register );
 
   // email list route
   var list = require('../app/controllers/list');
