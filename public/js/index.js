@@ -93,9 +93,16 @@ var app = function(vimeoId) {
       reuters: 'http://feeds.reuters.com/news/artsculture'
     }
   }, function( result ) {
-    $.each( result.data, function( i, v ) {
-      $('ul', $rss).append('<li>' + v + '</li>');
-      // console.log(v);
+    $.each( result, function( i, v ) {
+      var $tab = $('#'+i);
+
+      $tab.html('<ul></ul>');
+
+      var $sel = $('ul', $tab.get(0));
+
+      $.each( v, function( i2, v2 ) {
+        $sel.append( '<li>' + v2 + '</li>' );
+      });
     });
   });
 

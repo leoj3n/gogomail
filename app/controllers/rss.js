@@ -1,41 +1,44 @@
 var FeedParser = require('feedparser'),
   request = require('request'),
+  _ = require('underscore'),
   Promise = require('promise');
 
 exports.index = function( req, res ) {
   var feeds = req.body.feeds,
     articleLimit = 4,
-    all = [],
-    responseData = {};
+    all = [];
 
-  // for ( var i = 0; i < feeds.length; i++ ) {
-  for ( var feed in feeds ) {
-    // console.log( feed, feeds[ feed ] );
-    all.push(parseFeed( feed, feeds[ feed ] ));
-    console.log(feed);
-  }
+  _.each( feeds, function( value, key, list ) {
+    all.push(parseFeed( key, value ));
+  });
 
   Promise.all(all).done(function( result ) {
-    // console.log(result);
-    // res.json(result);
+    var flatResult = {};
+
+    for ( var i = 0; i < result.length; i++ ) {
+      _.extend(flatResult, result[i]);
+    }
+
+    res.json(flatResult);
   });
 
   function parseFeed( name, url ) {
     return new Promise(function( resolve, reject ) {
       var feedparser = new FeedParser();
-      var req = request(url);
-      var i = 0;
+      var urlReq = request(url);
+      var i = 0,
+        responseData = {};
 
       responseData[ name ] = [];
 
-      req.on( 'error', function( error ) {
+      urlReq.on( 'error', function( error ) {
         // handle any request errors
       });
 
-      req.on( 'response', function( res ) {
+      urlReq.on( 'response', function( urlRes ) {
         var stream = this;
 
-        if ( res.statusCode != 200 ) {
+        if ( urlRes.statusCode != 200 ) {
           return this.emit( 'error', new Error('Bad status code') );
         }
 
@@ -47,7 +50,6 @@ exports.index = function( req, res ) {
       });
 
       feedparser.on( 'readable', function() {
-        // This is where the action is!
         var stream = this,
           meta = this.meta,
           item;

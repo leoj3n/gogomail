@@ -25,23 +25,27 @@ block content
       // Nav tabs
       ul.nav.nav-tabs
         li.active
-          a(href='#home', data-toggle='tab') Home
+          a(href='#wsj', data-toggle='tab') Wall Street Journal
         li
-          a(href='#profile', data-toggle='tab') Profile
+          a(href='#espn', data-toggle='tab') ESPN
         li
-          a(href='#messages', data-toggle='tab') Messages
+          a(href='#people', data-toggle='tab') People
         li
-          a(href='#settings', data-toggle='tab') Settings
+          a(href='#cnn', data-toggle='tab') CNN
+        li
+          a(href='#reuters', data-toggle='tab') Reuters
 
       // Tab panes
       div(class='tab-content')
-        div.tab-pane.active#rss
+        div.tab-pane.active#wsj
           | ...
-        div.tab-pane#profile
+        div.tab-pane#espn
           | ...
-        div.tab-pane#messages
+        div.tab-pane#people
           | ...
-        div.tab-pane#settings
+        div.tab-pane#cnn
+          | ...
+        div.tab-pane#reuters
           | ...
 
   if env === 'development'
