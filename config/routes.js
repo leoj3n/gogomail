@@ -9,6 +9,11 @@ module.exports = function( app ) {
   var mail = require('../app/controllers/mail');
   app.post( '/mail', mail.register );
 
+  // rss route
+  // TODO: use POST data...
+  var rss = require('../app/controllers/rss');
+  app.post( '/rss', rss.index );
+
   // email list route
   var list = require('../app/controllers/list');
   app.get( '/list', list.index );

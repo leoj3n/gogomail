@@ -5,7 +5,10 @@ var app = function(vimeoId) {
   //
 
  var $html = $('html'),
-    $window = $(window);
+    $window = $(window),
+    $email = $('.email-input'),
+    $statusmsg = $('span.status-message'),
+    $rss = $('#rss');
 
   //
   // Hide mobile browser menu
@@ -21,13 +24,6 @@ var app = function(vimeoId) {
 
   FastClick.attach(document.body);
 
-  if ( Hammer.HAS_TOUCHEVENTS ) {
-    $container.hammer( { drag_lock_to_axis: true } );
-    _.tap( $html, 'a,button,[data-tap]' );
-  }
-
-  $html.addClass( Hammer.HAS_TOUCHEVENTS ? 'touch' : 'mouse' );
-
   //
   // Resize handler
   //
@@ -40,15 +36,19 @@ var app = function(vimeoId) {
   ).resize();
 
   //
-  // Details
+  // Visibility API example
   //
 
   Visibility.onVisible(function() {
     // ...
   });
 
+  //
+  // Email login
+  //
+
   $email.verimail({
-    messageElement: 'p#status-message'
+    messageElement: 'span.status-message'
   });
 
   $email.focus(function() {
@@ -77,5 +77,27 @@ var app = function(vimeoId) {
 
     e.preventDefault();
   });*/
+
+  //
+  // RSS feeds
+  //
+
+  $rss.html('<ul></ul>');
+
+  $.post( 'rss', {
+    feeds: [
+      'http://online.wsj.com/xml/rss/3_7031.xml',
+      'http://sports.espn.go.com/espn/rss/news',
+      'http://feeds.people.com/people/headlines',
+      'http://rss.cnn.com/rss/cnn_topstories.rss',
+      'http://feeds.reuters.com/news/artsculture'
+    ]
+  }, function( result ) {
+    $.each( result.data, function( i, v ) {
+      $('ul', $rss).append('<li>' + v + '</li>');
+      console.log(v);
+    });
+  });
+
 };
 

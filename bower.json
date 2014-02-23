@@ -5,7 +5,7 @@
     "underscore": "~1.6.0",
     "fastclick": "~0.6.11",
     "visibilityjs": "~1.1.0",
-    "Verimail.js": "git@github.com:amail/Verimail.js.git"
+    "Verimail.js": "git@github.com:amail/Verimail.js.git",
+    "twbs-bootstrap-sass": "~3.1.1"
   }
 }
-

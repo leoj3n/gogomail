@@ -9,6 +9,7 @@ html(lang='en')
     meta(name='keywords', content='mail,gogo')
     title!= title
     block css
+      link(href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel="stylesheet")
       if env === 'development'
         //-<!-- build:css dist/css/app.css -->
         link(rel='stylesheet', href='/css/app.css')

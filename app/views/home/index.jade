@@ -1,20 +1,48 @@
 extends ../layout
 
 block content
-  form#mail(action='mail', method='post')
-    ul.inputs
-      li
-        input.email-input(type='email'
-                          name='email'
-                          value='Gogo3dprinter@gmail.com'
-                          placeholder='your@email.com')
-      li
-        input.password-input(type='password'
-                          value='gogomail'
-                          name='password')
-      li
-        input.submit-input(type='submit'
-                           value='Submit!')
+  div.container
+    div.row
+      // Email login
+      form.form-horizontal(role='form')
+        div.form-group
+          label.col-sm-2.control-label(for='inputEmail1') Email address
+          div.col-sm-10
+            input#inputEmail1.form-control(value='Gogo3dprinter@gmail.com'
+                                           type='email',
+                                           placeholder="Enter email")
+        div.form-group
+            label.col-sm-2.control-label(for='inputPassword1') Password
+            div.col-sm-10
+              input#inputPassword1.form-control(value='gogomail',
+                                                type='password',
+                                                placeholder='Password')
+        div.form-group
+          div.col-sm-offset-2.col-sm-10
+            button.btn.btn-default(type='submit') Submit
+
+    div.row
+      // Nav tabs
+      ul.nav.nav-tabs
+        li.active
+          a(href='#home', data-toggle='tab') Home
+        li
+          a(href='#profile', data-toggle='tab') Profile
+        li
+          a(href='#messages', data-toggle='tab') Messages
+        li
+          a(href='#settings', data-toggle='tab') Settings
+
+      // Tab panes
+      div(class='tab-content')
+        div.tab-pane.active#rss
+          | ...
+        div.tab-pane#profile
+          | ...
+        div.tab-pane#messages
+          | ...
+        div.tab-pane#settings
+          | ...
 
   if env === 'development'
     //-<!-- build:js dist/js/index.js -->
@@ -26,6 +54,7 @@ block content
     script(src='/components/Verimail.js/src/verimail.jquery.js')
     script(src='/components/visibilityjs/lib/visibility.core.js')
     script(src='/components/visibilityjs/lib/visibility.fallback.js')
+    script(src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js")
     //-<!-- endbuild -->
   else
     script(src='/js/index.js')
