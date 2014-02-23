@@ -85,17 +85,17 @@ var app = function(vimeoId) {
   $rss.html('<ul></ul>');
 
   $.post( 'rss', {
-    feeds: [
-      'http://online.wsj.com/xml/rss/3_7031.xml',
-      'http://sports.espn.go.com/espn/rss/news',
+    feeds: {
+      wsj: 'http://online.wsj.com/xml/rss/3_7031.xml',
+      espn: 'http://sports.espn.go.com/espn/rss/news',
       'http://feeds.people.com/people/headlines',
       'http://rss.cnn.com/rss/cnn_topstories.rss',
       'http://feeds.reuters.com/news/artsculture'
-    ]
+    }
   }, function( result ) {
     $.each( result.data, function( i, v ) {
       $('ul', $rss).append('<li>' + v + '</li>');
-      console.log(v);
+      // console.log(v);
     });
   });
 
