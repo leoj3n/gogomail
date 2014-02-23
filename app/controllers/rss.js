@@ -5,25 +5,28 @@ var FeedParser = require('feedparser'),
 exports.index = function( req, res ) {
   var feeds = req.body.feeds,
     articleLimit = 4,
-    all = [];
+    all = [],
+    responseData = {};
 
-  for ( var i = 0; i < feeds.length; i++ ) {
-    all.push(parseFeed(feeds[i]));
+  // for ( var i = 0; i < feeds.length; i++ ) {
+  for ( var feed in feeds ) {
+    // console.log( feed, feeds[ feed ] );
+    all.push(parseFeed( feed, feeds[ feed ] ));
+    console.log(feed);
   }
 
   Promise.all(all).done(function( result ) {
     // console.log(result);
-    res.json(result);
+    // res.json(result);
   });
 
-  function parseFeed( feed ) {
+  function parseFeed( name, url ) {
     return new Promise(function( resolve, reject ) {
       var feedparser = new FeedParser();
-      var req = request(feed);
-      var i = 0,
-      responseData = {
-          data: []
-        };
+      var req = request(url);
+      var i = 0;
+
+      responseData[ name ] = [];
 
       req.on( 'error', function( error ) {
         // handle any request errors
@@ -50,7 +53,7 @@ exports.index = function( req, res ) {
           item;
 
         while ( ( item = stream.read() ) && ( i++ < articleLimit ) ) {
-          responseData.data.push(item.title);
+          responseData[ name ].push(item.title);
         }
 
         if ( i == articleLimit ) {
