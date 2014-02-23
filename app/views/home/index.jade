@@ -1,14 +1,16 @@
 extends ../layout
 
 block content
-  form#mail(action='mail', method='get')
+  form#mail(action='mail', method='post')
     ul.inputs
       li
         input.email-input(type='email'
                           name='email'
+                          value='Gogo3dprinter@gmail.com'
                           placeholder='your@email.com')
       li
         input.password-input(type='password'
+                          value='gogomail'
                           name='password')
       li
         input.submit-input(type='submit'
