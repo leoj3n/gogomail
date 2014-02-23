@@ -36,12 +36,8 @@ var app = function(vimeoId) {
   ).resize();
 
   //
-  // Visibility API example
+  // Show buy modal when trying to click link
   //
-
-  Visibility.onVisible(function() {
-    // ...
-  });
 
   $(document).on( 'click', 'a.list-group-item', function() {
     $('#buyModal').modal('show');
