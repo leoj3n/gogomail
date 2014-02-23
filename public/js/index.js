@@ -88,9 +88,9 @@ var app = function(vimeoId) {
     feeds: {
       wsj: 'http://online.wsj.com/xml/rss/3_7031.xml',
       espn: 'http://sports.espn.go.com/espn/rss/news',
-      'http://feeds.people.com/people/headlines',
-      'http://rss.cnn.com/rss/cnn_topstories.rss',
-      'http://feeds.reuters.com/news/artsculture'
+      people: 'http://feeds.people.com/people/headlines',
+      cnn: 'http://rss.cnn.com/rss/cnn_topstories.rss',
+      reuters: 'http://feeds.reuters.com/news/artsculture'
     }
   }, function( result ) {
     $.each( result.data, function( i, v ) {
