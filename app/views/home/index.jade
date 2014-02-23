@@ -3,50 +3,55 @@ extends ../layout
 block content
   div.container
     div.row
-      // Email login
-      form.form-horizontal(role='form')
-        div.form-group
-          label.col-sm-2.control-label(for='inputEmail1') Email address
-          div.col-sm-10
-            input#inputEmail1.form-control(value='Gogo3dprinter@gmail.com'
-                                           type='email',
-                                           placeholder="Enter email")
-        div.form-group
-            label.col-sm-2.control-label(for='inputPassword1') Password
-            div.col-sm-10
-              input#inputPassword1.form-control(value='gogomail',
-                                                type='password',
-                                                placeholder='Password')
-        div.form-group
-          div.col-sm-offset-2.col-sm-10
-            button.btn.btn-default(type='submit') Submit
+      div.col-md-6
+        div.panel.panel-default
+          div.panel-heading
+            h3.panel-title Preview your emails before you buy!
+          div.panel-body
+            // Email login
+            form.form-horizontal(role='form')
+              div.form-group
+                label.col-sm-2.control-label(for='inputEmail1') Email
+                div.col-sm-10
+                  input#inputEmail1.form-control(value='Gogo3dprinter@gmail.com'
+                                                 type='email',
+                                                 placeholder="Enter email")
+              div.form-group
+                  label.col-sm-2.control-label(for='inputPassword1') Password
+                  div.col-sm-10
+                    input#inputPassword1.form-control(value='gogomail',
+                                                      type='password',
+                                                      placeholder='Password')
+              div.form-group
+                div.col-sm-offset-2.col-sm-10
+                  button.btn.btn-default(type='submit') Submit
 
-    div.row
-      // Nav tabs
-      ul.nav.nav-tabs
-        li.active
-          a(href='#wsj', data-toggle='tab') Wall Street Journal
-        li
-          a(href='#espn', data-toggle='tab') ESPN
-        li
-          a(href='#people', data-toggle='tab') People
-        li
-          a(href='#cnn', data-toggle='tab') CNN
-        li
-          a(href='#reuters', data-toggle='tab') Reuters
+      div.col-md-6
+        // Nav tabs
+        ul.nav.nav-tabs
+          li.active
+            a(href='#wsj', data-toggle='tab') Wall Street Journal
+          li
+            a(href='#espn', data-toggle='tab') ESPN
+          li
+            a(href='#people', data-toggle='tab') People
+          li
+            a(href='#cnn', data-toggle='tab') CNN
+          li
+            a(href='#reuters', data-toggle='tab') Reuters
 
-      // Tab panes
-      div(class='tab-content')
-        div.tab-pane.active#wsj
-          | ...
-        div.tab-pane#espn
-          | ...
-        div.tab-pane#people
-          | ...
-        div.tab-pane#cnn
-          | ...
-        div.tab-pane#reuters
-          | ...
+        // Tab panes
+        div(class='tab-content')
+          div.tab-pane.active#wsj
+            | ...
+          div.tab-pane#espn
+            | ...
+          div.tab-pane#people
+            | ...
+          div.tab-pane#cnn
+            | ...
+          div.tab-pane#reuters
+            | ...
 
   if env === 'development'
     //-<!-- build:js dist/js/index.js -->

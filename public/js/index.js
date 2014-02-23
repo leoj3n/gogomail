@@ -96,12 +96,15 @@ var app = function(vimeoId) {
     $.each( result, function( i, v ) {
       var $tab = $('#'+i);
 
-      $tab.html('<ul></ul>');
+      $tab.html('<div class="list-group"></div>');
 
-      var $sel = $('ul', $tab.get(0));
+      var $sel = $('div', $tab.get(0));
 
       $.each( v, function( i2, v2 ) {
-        $sel.append( '<li>' + v2 + '</li>' );
+        $sel.append( '<a href="#" class="list-group-item">' +
+          '<h4 class="list-group-item-heading">' + v2.title + '</h4>' +
+          '<p class="list-group-item-text">' + v2.summary.substring(0, 70) +
+          '...</p></a></div>' );
       });
     });
   });

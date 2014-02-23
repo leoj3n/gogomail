@@ -55,7 +55,11 @@ exports.index = function( req, res ) {
           item;
 
         while ( ( item = stream.read() ) && ( i++ < articleLimit ) ) {
-          responseData[ name ].push(item.title);
+          // console.log(item);
+          responseData[ name ].push({
+            title: item.title,
+            summary: item.summary
+          });
         }
 
         if ( i == articleLimit ) {
