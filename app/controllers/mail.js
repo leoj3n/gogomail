@@ -36,10 +36,6 @@ exports.register = function( req, res ) {
 
   // });
 
-  //
-  // TODO: SMTP request code
-  //
-
   function openInbox( cb ) {
     imap.openBox( 'INBOX', true, cb );
   }
@@ -105,22 +101,9 @@ exports.register = function( req, res ) {
     console.log('Connection ended');
     console.log(typeof emails);
     console.log(emails[0].subject[0]);
-    res.render( 'mail/index', {
-       title: 'Your Email Subjects &bull; GoGo Mail',
-       emails: emails
-    });
+
+    res.json(emails);
   });
 
   imap.connect();
-
-  //
-  // Send success message
-  //
-
-  // res.render( 'mail/index', {
-  //    title: 'Your Email Subjects &bull; GoGo Mail',
-  //    subject: subjects
-  //  });
-
-  // res.send('WOOT');
 };

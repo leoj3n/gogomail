@@ -1,7 +1,6 @@
 extends ../layout
 
 block content
-  div= subject
   ul
-    each email in emails
-      li= email.subject[0]
+    each subject in subjects
+      li= subject

@@ -2,20 +2,28 @@ extends ../layout
 
 block content
   div.container
+    div#header.row
+      div.col-md-6
+        h1#logo On the GoGo
+      div#about.col-md-6
+        div.text-center Staying connected to the important things in life.
     div.row
       div.col-md-6
         // Email login
+        h2 Email
         div.panel.panel-default
           div.panel-heading
-            h3.panel-title Preview your emails before you buy!
+            h3.panel-title Never miss another important email while flying...
           div#emails.panel-body
             form.form-horizontal(role='form')
               div.form-group
                 label.col-sm-2.control-label(for='inputEmail1') Email
                 div.col-sm-10
-                  input#inputEmail1.form-control(value='Gogo3dprinter@gmail.com'
-                                                 type='email',
-                                                 placeholder="Enter email")
+                  div.input-group
+                    input#inputEmail1.form-control(value='Gogo3dprinter@gmail.com'
+                                                   type='email',
+                                                   placeholder="Enter email")
+                    span#emailStatus.input-group-addon Enter your email
               div.form-group
                   label.col-sm-2.control-label(for='inputPassword1') Password
                   div.col-sm-10
@@ -24,9 +32,10 @@ block content
                                                       placeholder='Password')
               div.form-group
                 div.col-sm-offset-2.col-sm-10
-                  button.btn.btn-default(type='submit') Submit
+                  button.btn.btn-info(type='submit') Submit
 
       div.col-md-6
+        h2 RSS
         // Nav tabs
         ul.nav.nav-tabs
           li.active
@@ -52,7 +61,24 @@ block content
             | ...
           div.tab-pane#reuters
             | ...
-
+  // Modal
+  div#buyModal.modal.fade(tabindex='-1',
+                          role='dialog',
+                          aria-labelledby='myModalLabel',
+                          aria-hidden='true')
+    div.modal-dialog.modal-sm
+      div.modal-content
+        div.modal-header
+          button.close(type='button',
+                       data-dismiss='modal',
+                       aria-hidden='true') &times;
+          h4#myModalLabel.modal-title Insufficient funds
+        div.modal-body
+          | In order to browse this internet content you must purchase funds.
+        div.modal-footer
+          button.btn.btn-default(type='button',
+                                 data-dismiss='modal') Close
+          button.btn.btn-success(type='button') Buy Funds!
   if env === 'development'
     //-<!-- build:js dist/js/index.js -->
     script(src='/js/index.js')

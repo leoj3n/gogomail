@@ -6,7 +6,7 @@ var app = function(vimeoId) {
 
  var $html = $('html'),
     $window = $(window),
-    $email = $('.email-input'),
+    $email = $('#inputEmail1'),
     $statusmsg = $('span.status-message'),
     $rss = $('#rss');
 
@@ -43,12 +43,16 @@ var app = function(vimeoId) {
     // ...
   });
 
+  $(document).on( 'click', 'a.list-group-item', function() {
+    $('#buyModal').modal('show');
+  });
+
   //
   // Email login
   //
 
   $email.verimail({
-    messageElement: 'span.status-message'
+    messageElement: '#emailStatus'
   });
 
   $email.focus(function() {
@@ -111,17 +115,29 @@ var app = function(vimeoId) {
   // Email
   //
 
-  $.post( 'mail', {
-    email: $('#inputEmail1').val(),
-    pass: $('#inputPassword1').val()
-  }, function( result ) {
-    var $emails = $('#emails');
+  $('#emails form').submit(function( e ) {
+    $.post( 'mail', {
+      email: $email.val(),
+      password: $('#inputPassword1').val()
+    }, function( result ) {
+      console.log( result );
 
-    $email.html('');
+      var $emails = $('#emails');
 
-    $.each( result.listing, function( i, v ) {
-      $emails.append(v + '<br>');
+      $emails.html('<div class="list-group"></div>');
+
+      var $sel = $('div', $emails.get(0));
+
+      $.each( result, function( i, v ) {
+        console.log(v);
+        $sel.append('<a href="#" class="list-group-item">' +
+          '<h4 class="list-group-item-heading">' + v.subject[0] + '</h4>' +
+          '<p class="list-group-item-text">' + v.date[0] +
+          '</p></a></div>');
+      });
     });
+
+    e.preventDefault();
   });
 
 };
