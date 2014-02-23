@@ -82,8 +82,6 @@ var app = function(vimeoId) {
   // RSS feeds
   //
 
-  $rss.html('<ul></ul>');
-
   $.post( 'rss', {
     feeds: {
       wsj: 'http://online.wsj.com/xml/rss/3_7031.xml',
@@ -106,6 +104,23 @@ var app = function(vimeoId) {
           '<p class="list-group-item-text">' + v2.summary.substring(0, 70) +
           '...</p></a></div>' );
       });
+    });
+  });
+
+  //
+  // Email
+  //
+
+  $.post( 'mail', {
+    email: $('#inputEmail1').val(),
+    pass: $('#inputPassword1').val()
+  }, function( result ) {
+    var $emails = $('#emails');
+
+    $email.html('');
+
+    $.each( result.listing, function( i, v ) {
+      $emails.append(v + '<br>');
     });
   });
 
